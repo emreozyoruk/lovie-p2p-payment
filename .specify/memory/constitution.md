@@ -1,50 +1,37 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# PayRequest Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Security-First Fintech Development
+All code must treat money with care. Amounts are stored as integers in cents — never floats. Row Level Security keeps user data private. Validation runs on both client and server. No user sees another user's data.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Spec-Driven Development
+Every feature starts with a spec. The spec is the source of truth. It must be clear enough that any developer or AI agent can build from it with no questions. Specs include user stories, data models, API contracts, validation rules, and edge cases.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Type Safety & Code Quality
+TypeScript strict mode. All API responses typed. No `any` types. Prettier and ESLint auto-run via hooks on every edit. TypeScript check runs after every response.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Test-First Quality
+E2E tests cover all user paths. Playwright with video recording. Tests pass before deploy. Each feature is tested with both sender and receiver accounts.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Mobile-First Design
+All UI works on mobile (375px), tablet (768px), and desktop (1280px). Touch targets minimum 44px. Forms full-width on mobile.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### VI. Keep It Simple
+No over-engineering. Use ready-made tools — shadcn/ui, Supabase. Ship fast. YAGNI.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Technology Stack
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- **Framework**: Next.js 14 (App Router) + TypeScript
+- **Database**: Supabase (PostgreSQL + Row Level Security)
+- **Auth**: Supabase Auth (email + password for testing)
+- **UI**: Tailwind CSS + shadcn/ui
+- **Testing**: Playwright (E2E + video recording + Playwright MCP for visual testing)
+- **Deploy**: Vercel
+- **AI Tools**: Claude Code with MCP servers (Supabase, Playwright, Context7, GitHub), hooks, skills, and Agent Teams
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Security and fintech rules are not optional. Every change must follow this constitution.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Date**: 2026-04-08
