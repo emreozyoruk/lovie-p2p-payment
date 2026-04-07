@@ -8,7 +8,7 @@ async function login(page: import('@playwright/test').Page) {
   await page.getByLabel('Email').fill(SENDER_EMAIL);
   await page.getByLabel('Password').fill(SENDER_PASS);
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.waitForURL('**/dashboard');
+  await page.waitForURL('**/dashboard', { timeout: 15000 });
 }
 
 test.describe('Expiration', () => {

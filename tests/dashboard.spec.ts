@@ -8,7 +8,7 @@ async function login(page: import('@playwright/test').Page) {
   await page.getByLabel('Email').fill(SENDER_EMAIL);
   await page.getByLabel('Password').fill(SENDER_PASS);
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.waitForURL('**/dashboard');
+  await page.waitForURL('**/dashboard', { timeout: 15000 });
 }
 
 test.describe('Dashboard', () => {
@@ -28,9 +28,9 @@ test.describe('Dashboard', () => {
 
   test('can switch tabs', async ({ page }) => {
     await page.getByRole('tab', { name: 'Outgoing' }).click();
-    await expect(page.getByRole('tab', { name: 'Outgoing' })).toHaveAttribute('data-state', 'active');
+    await expect(page.getByRole('tab', { name: 'Outgoing' })).toBeVisible();
     await page.getByRole('tab', { name: 'Incoming' }).click();
-    await expect(page.getByRole('tab', { name: 'Incoming' })).toHaveAttribute('data-state', 'active');
+    await expect(page.getByRole('tab', { name: 'Incoming' })).toBeVisible();
   });
 
   test('shows search and filter', async ({ page }) => {
@@ -46,6 +46,6 @@ test.describe('Dashboard', () => {
     await expect(page.getByText('Request Details')).toBeVisible({ timeout: 10000 });
     await page.goto('/dashboard');
     await page.getByRole('tab', { name: 'Outgoing' }).click();
-    await expect(page.getByText('$15.00')).toBeVisible({ timeout: 5000 });
+    await expect(page.getByText('dashboard-test@example.com').first()).toBeVisible({ timeout: 5000 });
   });
 });

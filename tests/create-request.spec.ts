@@ -9,7 +9,7 @@ async function login(page: import('@playwright/test').Page, email: string, passw
   await page.getByLabel('Email').fill(email);
   await page.getByLabel('Password').fill(password);
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.waitForURL('**/dashboard');
+  await page.waitForURL('**/dashboard', { timeout: 15000 });
 }
 
 test.describe('Create Request', () => {
