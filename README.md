@@ -6,6 +6,10 @@ A peer-to-peer payment request app built for the Lovie interview assignment. Use
 
 [https://lovie-p2p-payment.vercel.app](https://lovie-p2p-payment.vercel.app)
 
+## Build Process Video
+
+[Watch the full build process on YouTube](https://youtu.be/UbOJPW8kpEo)
+
 ## Features
 
 - **Create Payment Requests** — Enter email, amount, and note. Gets a shareable link.
